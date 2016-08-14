@@ -1,0 +1,24 @@
+{
+  "name": "498rkpolling",
+  "description": "",
+  "main": "app.js",
+  "license": "MIT",
+  "homepage": "https://github.com/chadfranzen/votingapp",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.8",
+    "codemirror": "~5.17.0",
+    "angular-ui-codemirror": "~0.3.0",
+    "bootstrap": "~3.3.7",
+    "angular-bootstrap-switch": "~0.5.1",
+    "angular-socket-io": "^0.7.0"
+  }
+}

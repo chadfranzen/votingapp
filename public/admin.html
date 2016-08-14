@@ -1,0 +1,81 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="css/monokai.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+	<script src="lib/codemirror/lib/codemirror.js"></script>
+	<script src="js/javascript.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+	<script src="lib/angular-ui-codemirror/ui-codemirror.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/controllers.js"></script>
+  </head>
+  <body class="admin" ng-app="admin" ng-controller="AdminController">
+	<div class="row">
+		<form class="columns medium-centered medium-8" name="newQuestion" novalidate>
+			<div class="row">
+				<label>
+					<span>Question Body</span>
+					<textarea name="body" ng-model="question.body" type="text" id="form-body" required></textarea>
+				</label>
+			</div>
+			<div class="row">
+				<label>
+					Code (Optional)
+					<div ui-codemirror="{mode: 'javascript', lineNumbers: true, theme: 'monokai', onLoad: codeMirrorLoaded}" ng-model="question.code"></div>
+				</label>
+			</div>
+			<div class="row">
+				<label>
+					Number of choices:
+					<select ng-model="numChoices" id="form-numChoices" ng-options="x as x for x in [1, 2, 3, 4, 5, 6]" ng-init="numChoices = 4">
+					</select>
+				</label>
+			</div>
+			<div class="row" ng-repeat="choice in question.choices">
+				<label>
+					{{choice.letter}}
+					<textarea class="columns medium-10" ng-model="choice.content" type="text" required></textarea>
+				</label>
+			</div>
+			<div class="row">
+				<label>
+					Correct Answer
+					<select id="form-correctAnswer" ng-model="question.correctAnswer" ng-options="choice.letter as choice.letter for choice in question.choices" name="correctAnswer" required>
+					</select>
+				</label>
+			</div>
+			<div class="row text-center">
+				<span ng-show="success">Question created!</span>
+				<span ng-show="error">Creation failed!</span>
+			</div>
+			<button class="button" ng-click="submit()" ng-disabled="newQuestion.$invalid || newQuestion.$submitted">Create Question</button>
+		</form>
+	</div>
+	<div class="row" ng-repeat="question in questions | orderBy:question.dateCreated:true">
+		<div class="columns medium-centered medium-8 question">
+			<h4 class="question-body">{{question.body}}</h4>
+			<p ng-show="question.code" hljs hljs-source="question.code"></p>
+			<div ng-class="{correct: choice.letter === question.correctAnswer}" class="choice" ng-repeat="choice in question.choices">
+				<div><b>{{choice.letter}}:</b> {{choice.content}}</div>
+				<div><b>Votes:</b> {{choice.votes ? choice.votes.length : 0}}</div>
+			</div>
+			<button class="button active-btn" ng-hide="question.active" ng-click="activate(question)">Make Active</button>
+			<button class="button alert reset-btn" ng-click="reset(question)">Reset Votes</button>
+			<button class="button alert delete-btn" ng-click="delete(question)">Delete Question</button>
+		</div>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "498rkpolling",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "http-auth": "^2.4.4",
+    "lodash": "^4.15.0",
+    "mongoose": "^4.5.8",
+    "socket.io": "^1.4.8",
+    "twilio": "^2.9.2",
+    "xml-escape": "^1.1.0"
+  }
+}

@@ -1,0 +1,103 @@
+.vote-container {
+    position: relative;
+    top: 50% !important;
+    transform: translateY(-50%);
+}
+
+.choice {
+	margin-bottom: 30px !important;
+	text-align: left;
+	padding: 0px 50px;
+}
+
+.content {
+	width: 80%;
+	display: inline-block;
+}
+
+.votes {
+	float: right;
+	display: inline-block;
+}
+
+.no-active-question {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+	text-align: center;
+}
+
+.voting {
+	font-size: 26px !important;
+	margin: 0 auto;
+	margin-top: 70px;
+	width: 710px;
+}
+
+.voting-switch {
+	float: left;
+}
+
+.voting-label {
+	margin: 5px 0px;
+}
+
+.phone {
+	float: right;
+	position: relative;
+	bottom: 4px;
+}
+
+.number {
+	font-size: 36px !important;
+	position: relative;
+	top: 2px;
+	margin-left: 2px;
+}
+
+.bootstrap-switch {
+	margin-left: 15px;
+	position: relative;
+	top: 8px;
+}
+
+.results {
+	clear: both;
+	padding-top: 40px;
+	font-size: 26px !important;
+}
+
+.results-btn {
+	position: relative;
+	bottom: 3px;
+	margin-left: 15px;
+}
+
+.answer {
+	color: #F58026;
+}
+
+/*Admin*/
+.question {
+	margin-top: 20px;
+	border: 1px solid grey;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+.correct {
+	color: green;
+}
+
+.admin {
+	padding: 20px 0px;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+/*Registration*/
+.registration-text {
+	font-size: 26px !important;
+}

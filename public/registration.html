@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="lib/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/controllers.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/ranjitha.css" id="theme">
+	<link rel="stylesheet" href="lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
+  </head>
+  <body ng-app="registration" ng-controller="RegistrationController" class="container">
+	  <div class="reveal">
+		  <div class="slides">
+			  <section>
+				  <form>
+					  <div class="form-group">
+						  <input type="text" class="form-control" ng-model="netid" ng-model-options="{debounce: 300}" placeholder="Enter your netid."></input>
+					  </div>
+				  </form>
+				  <div class="registration-text" ng-show="netid && !checking" ng-cloak>
+					  {{ isRegistered ? netid + ' is registered!' : netid + ' is not registered. Register by texting "register ' + netid + '" to (630) 283-7680.' }}
+				  </div>
+				  <div class="registration-text" ng-show="checking">Checking...</div>
+			  </section>
+		  </div>
+	  </div>
+	  <script src="/js/reveal.js"></script>
+	  <script>
+		  Reveal.initialize({
+			  controls: false,
+			  progress: false,
+			  transition: Reveal.getQueryHash().transition || 'default',
+			  dependencies: []
+		  });
+	  </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+	<script src="lib/codemirror/lib/codemirror.js"></script>
+	<script src="js/javascript.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="lib/angular-socket-io/socket.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-highlightjs/0.6.1/angular-highlightjs.js"></script>
+	<script src="lib/angular-ui-codemirror/ui-codemirror.min.js"></script>
+	<!-- using bootstrap for switch bc foundation's styles squash reveal's -->
+	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="lib/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+	<script src="lib/angular-bootstrap-switch/dist/angular-bootstrap-switch.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/controllers.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/ranjitha.css" id="theme">
+	<link rel="stylesheet" href="lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="css/zenburn.css">
+  </head>
+  <body ng-app="vote" ng-controller="VoteController">
+    <div class="reveal">
+		<div class="slides">
+			<section class="vote-container">
+				<div ng-show="question" ng-cloak>
+					<h4>{{question.body}}</h4>
+					<div hljs ng-show="question.code" hljs-source="question.code"></div>
+					<div class="choice" ng-class="{ answer: showingAnswer && (choice.letter == question.correctAnswer) }" ng-repeat="choice in question.choices">
+						<div class="content">
+							<b>{{choice.letter}}:</b> {{choice.content}}
+						</div>
+						<div class="votes" ng-show="showingResults">
+							{{choice.votes ? choice.votes.length : 0}}
+						</div>
+					</div>
+					<div class="voting">
+						<div class="voting-switch">
+							<span class="voting-label">Voting:</span>
+							<input ng-model="question.voting" bs-switch type="checkbox">
+						</div>
+						<div class="phone" ng-show="question.voting">SMS votes to <span class="number">(630) 283-7680</span></div>
+					</div> 
+					<div class="results">
+						<span>
+							Total Votes: {{countVotes(question)}}
+						</span>
+						<button class="results-btn btn btn-primary" ng-hide="showingResults" ng-click="showingResults = true">Show Results</button>
+						<button class="results-btn btn btn-primary" ng-show="showingResults && !showingAnswer" ng-click="showingAnswer = true">Show Answer</button>
+					</div>
+				</div>
+				<div ng-hide="question">
+					There is currently no active question.
+				</div>
+			</section>
+		</div>
+    </div>
+	<script src="/js/reveal.js"></script>
+	<script>
+		Reveal.initialize({
+			controls: false,
+			progress: false,
+			transition: Reveal.getQueryHash().transition || 'default',
+			dependencies: []
+		});
+	</script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/controllers.js"></script>
+  </head>
+  <body ng-app="students" ng-controller="StudentController">
+	  <div class="row">
+		  <table>
+			  <thead>
+				  <tr>
+					  <th class="clickable" ng-click="sortBy('netid')">netid</th>
+					  <th class="clickable" ng-click="sortBy('phone')">Phone #</th>
+					  <th class="clickable" ng-click="sortBy('votes.length')"># of Votes</th>
+					  <th class="clickable" ng-click="sortBy(getCorrectVotes)"># Correct</th>
+				  </tr>
+			  </thead>
+			  <tbody>
+				  <tr ng-repeat="student in students | orderBy:comparison:shouldReverse">
+					  <td>{{student.netid}}</td>
+					  <td>{{student.phone}}</td>
+					  <td>{{student.votes.length}}</td>
+					  <td>{{getCorrectVotes(student)}}</td>
+				  </tr>
+			  </tbody>
+		  </table>
+	  </div>
+  </body>
+</html>
