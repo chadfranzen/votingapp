@@ -86,7 +86,7 @@ var handleRegistration = function(body, from, res) {
 			});
 		}
 	});
-}
+};
 
 var handleVote = function(body, from, res) {
 	body = body.trim().toUpperCase();
@@ -113,7 +113,7 @@ var handleVote = function(body, from, res) {
 			});
 		});
 	});
-}
+};
 
 app.get('/api/questions', auth.connect(digest), function(req, res) {
 	Question.find().populate('choices.votes').then(function(questions) {

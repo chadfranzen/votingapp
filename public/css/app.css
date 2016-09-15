@@ -1,11 +1,37 @@
+/* 
+ !important spam is to override styles set in js by Reveal.js
+ If this gets to be too painful we should ditch Reveal.js altogether
+*/
+
+.reveal .slides {
+  height: 100% !important;
+  top: 0;
+  margin-top: 0;
+}
+
+.reveal .slides>section {
+  min-height: 90%;
+  top: auto;
+}
+
+.reveal .slides>section>section {
+  min-height: 100%;
+}
+
 .vote-container {
     position: relative;
     top: 50% !important;
     transform: translateY(-50%);
+	overflow-y: auto !important;
+	overflow-x: hidden !important;
+	max-height: 100%;
+}
+.vote-container::-webkit-scrollbar { 
+    display: none; 
 }
 
 .choice {
-	margin-bottom: 30px !important;
+	margin-bottom: 15px !important;
 	text-align: left;
 	padding: 0px 50px;
 }
@@ -20,6 +46,12 @@
 	display: inline-block;
 }
 
+.reminder {
+	font-size: 21px !important;
+	margin-top: 80px;
+	clear: both;
+}
+
 .no-active-question {
     position: relative;
     top: 50%;
@@ -30,7 +62,7 @@
 .voting {
 	font-size: 26px !important;
 	margin: 0 auto;
-	margin-top: 70px;
+	margin-top: 25px;
 	width: 710px;
 }
 

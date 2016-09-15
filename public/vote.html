@@ -21,14 +21,14 @@
     <script src="./js/app.js"></script>
     <script src="./js/controllers.js"></script>
 	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/ranjitha.css" id="theme">
+	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" href="lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
 	<!-- Code syntax highlighting -->
 	<link rel="stylesheet" href="css/zenburn.css">
   </head>
-  <body ng-app="vote" ng-controller="VoteController">
+  <body id="vote-page" ng-app="vote" ng-controller="VoteController">
     <div class="reveal">
 		<div class="slides">
 			<section class="vote-container">
@@ -48,8 +48,11 @@
 							<span class="voting-label">Voting:</span>
 							<input ng-model="question.voting" bs-switch type="checkbox">
 						</div>
-						<div class="phone" ng-show="question.voting">SMS votes to <span class="number">(630) 283-7680</span></div>
+						<div class="phone" ng-show="question.voting">SMS a letter to <span class="number">(630) 283-7680</span></div>
 					</div> 
+					<div class="reminder" ng-show="question.voting">
+						Have you registered? If not, SMS "register &lt;netid&gt;" to (630) 283-7680 before voting!
+					</div>
 					<div class="results">
 						<span>
 							Total Votes: {{countVotes(question)}}
