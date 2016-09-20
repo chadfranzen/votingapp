@@ -2,6 +2,9 @@ angular.module('adminControllers', [])
 .controller('AdminController', ['$scope', '$http', function($scope, $http) {
 	var fetch = function() {
 		$http.get('/api/questions').then(function(questions) {
+      questions.data.forEach(function(question) {
+        question.dateCreated = new Date(question.dateCreated);
+      });
 			$scope.questions = questions.data;
 		});
 	}

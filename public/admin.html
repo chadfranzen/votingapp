@@ -64,7 +64,7 @@
 			<button class="button" ng-click="submit()" ng-disabled="newQuestion.$invalid || newQuestion.$submitted">Create Question</button>
 		</form>
 	</div>
-	<div class="row" ng-repeat="question in questions | orderBy:question.dateCreated:true">
+	<div class="row" ng-repeat="question in questions | orderBy:'dateCreated':true">
 		<div class="columns medium-centered medium-8 question">
 			<h4 class="question-body">{{question.body}}</h4>
 			<p ng-show="question.code" hljs hljs-source="question.code"></p>
